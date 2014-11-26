@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	
+	<!-- 配置前台新闻信息 -->
+	<!-- 配置dao -->
+	<bean id="newsDao" class="cn.com.dao.front.impl.NewsDao">
+		<property name="newsTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!-- 配置service -->
+	<bean id="newsService" class="cn.com.service.front.impl.NewsService">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<!-- 配置action -->
+	<bean name="newsAction" class="cn.com.action.front.NewsAction">
+		<property name="newsService" ref="newsService"></property>
+	</bean>
+	
+	
+	<!-- 配置后台新闻信息 -->
+	<!-- 配置dao -->
+	<bean id="adminNewsDao" class="cn.com.dao.admin.impl.NewsDao">
+		<property name="adminnewsTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!-- 配置service -->
+	<bean id="adminNewsService" class="cn.com.service.admin.impl.NewsService">
+		<property name="adminNewsDao" ref="adminNewsDao"></property>
+	</bean>
+	<!-- 配置action -->
+	<bean name="adminNewsAction" class="cn.com.action.admin.NewsAction">
+		<property name="adminNewsService" ref="adminNewsService"></property>
+	</bean>
+
+</beans>

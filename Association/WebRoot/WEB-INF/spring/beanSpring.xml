@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- 配置SessionFactory   LocalSessionFactoryBean -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+		<!-- 加载指定文件夹下的所有的hbm配置文件 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:cn/com/model/</value>
+			</list>
+		</property>
+
+		<!-- 加载hibernate.cfg.xml -->
+		<property name="configLocations">
+			<list>
+				<value>classpath:hibernate.cfg.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- hibernateTemplate -->
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 分布式事务处理 -->
+	<tx:advice id="advice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="deal*" propagation="REQUIRED" />
+			<tx:method name="revoke*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="*member" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<!-- 切入点 -->
+		<aop:pointcut id="pointcut"
+			expression="execution(public * cn.com.dao.*.impl.*.*(..))" />
+		<!-- 事务关联 -->
+		<aop:advisor advice-ref="advice" pointcut-ref="pointcut" />
+		<!--  
+			<aop:aspect>
+			</aop:aspect>
+		-->
+	</aop:config>
+
+</beans>

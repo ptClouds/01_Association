@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	
+	<!-- 配置前台用户登录信息 -->
+	<!-- 配置dao -->
+	<bean id="frootLoginDao" class="cn.com.dao.front.impl.LoginDao">
+		<property name="frootLoginTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!-- 配置service -->
+	<bean id="frootLoginService" class="cn.com.service.front.impl.LoginService">
+		<property name="frootLoginDao" ref="frootLoginDao"></property>
+	</bean>
+	<!-- 配置action -->
+	<bean name="fLoginAction" class="cn.com.action.front.LoginAction">
+		<property name="frootLoginService" ref="frootLoginService"></property>
+	</bean>
+	
+	
+	
+	<!-- 配置前台用户登录信息 -->
+	<!-- 配置dao -->
+	<bean id="memberDao" class="cn.com.dao.front.impl.MemberDao">
+		<property name="memberTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!-- 配置service -->
+	<bean id="memberService" class="cn.com.service.front.impl.MemberService">
+		<property name="memberDao" ref="memberDao"></property>
+	</bean>
+	<!-- 配置action -->
+	<bean name="mainAction" class="cn.com.action.front.MemberAction">
+		<property name="memberService" ref="memberService"></property>
+	</bean>
+
+</beans>

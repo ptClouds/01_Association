@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!--  设置字符编码 -->
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+
+	<!-- 指定加载国际化资源文件 -->
+	<constant name="struts.custom.i18n.resources"
+		value="com/yourcompany/ApplicationResources" />
+
+	<package name="default" extends="struts-default">
+
+		<!-- class:指定spring中配置的bean的名字 -->
+		
+		<!-- 配置前台用户登录信息的Action结点 -->
+		<action name="flogin*" class="fLoginAction" method="{1}">
+			<result>login.jsp</result>
+			<result name="loginErro">login.jsp</result>
+			<result name="flogin" type="redirect">mainshowMainInfo.action</result>
+			<result name="siteAdmin" type="redirect">toadminshowAdminInfo.action</result>
+		</action>
+		
+		<!-- 配置前台用户登录信息的Action结点 -->
+		<action name="main*" class="mainAction" method="{1}">
+			<result>main.jsp</result>
+			<result name="loginErro">login.jsp</result>
+			<result name="showMainInfo">main.jsp</result>
+			<result name="memberForPage">member.jsp</result>
+			<result name="assoForPage">asso.jsp</result>
+			<result name="addMemberInfo">login.jsp</result>
+		</action>
+		
+		
+		<!-- 配置前台用户登录信息的Action结点 -->
+		<action name="news*" class="newsAction" method="{1}">
+			<result>news.jsp</result>
+			<result name="showNewsForPage">news.jsp</result>
+		</action>
+		
+		
+		<!-- 配置后台用户信息的Action结点 -->
+		<action name="adminUser*" class="adminUserAction" method="{1}">
+			<result>memberInfo.jsp</result>
+			<result name="showUsersInfo">admin/member/memberInfo.jsp</result>
+			<result name="showNotDealContact">admin/asso/contactNotDeal.jsp</result> 
+			<result name="showHadDealContact">admin/asso/contactHadDeal.jsp</result> 
+			<result name="showNotDealAsso">admin/asso/assoNotDeal.jsp</result> 
+			<result name="showHadDealAsso">admin/asso/assoHadDeal.jsp</result> 
+			<result name="dealJoinAssoInfo" type="redirect">adminUsershowHadDealContact.action?contactFlag=1</result>
+			<result name="dealApplyAsso" type="redirect">adminUsershowHadDealAsso.action?flag=1</result>
+			<result name="revokeAssoInfo" type="redirect">adminUsershowNotDealAsso.action</result>
+			<result name="revokeContactInfo" type="redirect">adminUsershowNotDealContact.action</result>
+			<result name="deleteMemberInfo" type="redirect">adminUsershowUsersInfo.action?memberFlag=1</result>
+			<result name="memberInfoStatus" type="redirect">adminUsergetNotDealMember.action?memberFlag=2</result>
+			<result name="getNotDealMember">admin/member/memberInfo.jsp</result>
+		</action>
+		
+		<!-- 配置后台社团信息的Action结点 -->
+		<action name="adminAsso*" class="mainAction" method="{1}">
+			<result name="assoForPage">admin/asso/adminAsso.jsp</result>
+		</action>
+		<!-- 配置后台留言与公告信息的Action结点 -->
+		<action name="adminMsg*" class="mainAction" method="{1}">
+			<result name="showAdminMsg">admin/message/memberMsg.jsp</result>
+			<result name="showAdminNotice">admin/notice/adminNotice.jsp</result>
+		</action>
+		
+		<!-- 配置后台新闻信息的Action结点 -->
+		<action name="adminNews*" class="newsAction" method="{1}">
+			<result name="showNewsInfo">admin/news/newsInfo.jsp</result>
+		</action>
+		
+		
+		<!-- 配置后台新闻信息增加，删除，修改的Action结点 -->
+		<action name="dealNews*" class="adminNewsAction" method="{1}">
+			<result name="addNews" type="redirect">adminNewsshowNewsInfo.action?newsFlag=3</result>
+			<result name="addNotice" type="redirect">adminMsgshowAdminNotice.action?noticeFlag=2</result>
+			<result name="deleteMsg" type="redirect">adminMsgshowNewsInfo.action?msgFlag=1</result>
+			<result name="deleteNotice" type="redirect">adminMsgshowAdminNotice.action?noticeFlag=1</result>
+			<result name="deleteNews" type="redirect">adminNewsshowNewsInfo.action?newsFlag=1</result>
+			<result name="updateNotice" type="redirect">adminMsgshowAdminNotice.action?noticeFlag=0</result>
+			<result name="notCheck" type="redirect">adminMsgshowAdminNotice.action?noticeFlag=0</result>
+			<result name="updateNews" type="redirect">adminNewsshowNewsInfo.action?newsFlag=0</result>
+			<result name="error">admin/errorJsp.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 配置后台管理员信息的Action结点 -->
+		<action name="toadmin*" class="adminAction" method="{1}">
+			<result name="queryAdminInfo">admin/admin/adminInfo.jsp</result>
+			<result name="showAdminMain">admin/adminMain.html</result>
+			<result name="adminExit">login.jsp</result>
+			<result name="addAdminInfo" type="redirect">toadminqueryAdminInfo.action</result>
+			<result name="deleteAdmin" type="redirect">toadminqueryAdminInfo.action</result>
+			
+			<result name="updateAdminInfo">admin/admin/updateAdmin.jsp</result>
+			<result name="error">admin/errorJsp.jsp</result>
+		</action>
+		
+		<!-- 配置后台管理员信息的Action结点 -->
+		<action name="assoImg*" class="jfreecharAction" method="{1}">
+			<result name="showAssoImg">admin/jfreechar/assoReport.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 配置个人主页首页信息的Action结点 -->
+		<action name="space*" class="spaceAction" method="{1}">
+			<result name="showSpaceInfo">userSpace/spaceMain.jsp</result>
+			<result name="addContact" type="redirect">spaceshowMySpaceInfo.action</result>
+			<result name="addAssoInfo" type="redirect">spaceshowMySpaceInfo.action</result>
+			<result name="error">admin/errorJsp.jsp</result>
+		</action>
+		
+		
+		<!-- 配置邮件的收发Action结点 -->
+		<action name="mail*" class="sendMailAction" method="{1}">
+			<result name="sendMail">sendMail/showMailMsg.jsp</result>
+		</action>
+		
+		
+		<!-- 配置邮件的收发Action结点 -->
+		<action name="readmail*" class="getMailAction" method="{1}">
+			<result name="getMail">sendMail/mailList.jsp</result>
+		</action>
+		
+	</package>
+</struts>
+

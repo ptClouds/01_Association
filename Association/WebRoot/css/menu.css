@@ -1,0 +1,69 @@
+.menu {
+	POSITION: relative; WIDTH: 950px; FONT-FAMILY: "Î¢ÈíÑÅºÚ", "ËÎÌå", Arial; FLOAT: right; FONT-SIZE: 12px; MARGIN-RIGHT: 10px
+}
+.menu UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.menu UL LI {
+	POSITION: relative; BORDER-LEFT: #ebe0c6 1px solid; FLOAT: left
+}
+.menu UL LI.first {
+	BORDER-LEFT: 0px
+}
+.menu UL LI A {
+	BORDER-BOTTOM: #fff 0px solid; BORDER-LEFT: #fff 0px solid; LINE-HEIGHT: 3em; PADDING-LEFT: 10px; WIDTH: 100px; DISPLAY: block; BACKGROUND: url(../images/bg_diary.gif) #e3d1a9 repeat-x; HEIGHT: 31px; COLOR: #000; BORDER-TOP: #fff 0px solid; BORDER-RIGHT: #fff 0px solid; TEXT-DECORATION: none
+}
+.menu UL LI A:visited {
+	BORDER-BOTTOM: #fff 0px solid; BORDER-LEFT: #fff 0px solid; LINE-HEIGHT: 3em; PADDING-LEFT: 10px; WIDTH: 100px; DISPLAY: block; BACKGROUND: url(../images/bg_diary.gif) #e3d1a9 repeat-x; HEIGHT: 31px; COLOR: #000; BORDER-TOP: #fff 0px solid; BORDER-RIGHT: #fff 0px solid; TEXT-DECORATION: none
+}
+.menu UL LI UL {
+	DISPLAY: none
+}
+.menu UL LI:hover A {
+	COLOR: #fff
+}
+.menu UL LI:hover UL {
+	POSITION: absolute; MARGIN-TOP: 1px; WIDTH: 100px; DISPLAY: block; TOP: 30px; LEFT: 0px
+}
+.menu UL LI:hover UL LI UL {
+	DISPLAY: none
+}
+.menu UL LI:hover UL LI A {
+	BORDER-BOTTOM: #fff 0px solid; BORDER-LEFT: #fff 0px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 1.2em; PADDING-LEFT: 10px; WIDTH: 120px; PADDING-RIGHT: 10px; DISPLAY: block; BACKGROUND: #faeec7; HEIGHT: auto; COLOR: #000; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 0px solid; PADDING-TOP: 5px
+}
+.menu UL LI:hover UL LI A.drop {
+	BACKGROUND: #c9c9a7
+}
+.menu UL LI:hover UL LI A:hover {
+	BACKGROUND: #c9c9a7; COLOR: #000
+}
+.menu UL LI:hover UL LI:hover UL {
+	POSITION: absolute; WIDTH: 110px; DISPLAY: block; TOP: 0px; LEFT: 150px
+}
+.menu UL LI:hover UL LI:hover UL.left {
+	LEFT: -119px
+}
+.menu UL LI A:hover {
+	BACKGROUND: #bd8d5e; COLOR: #fff
+}
+.menu UL LI A:hover UL {
+	POSITION: absolute; MARGIN-TOP: 1px; DISPLAY: block; BACKGROUND: #fff; TOP: 2.5em; LEFT: 0px
+}
+.menu UL LI A:hover UL LI A {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 1.5em; PADDING-LEFT: 10px; WIDTH: 129px; PADDING-RIGHT: 10px; DISPLAY: block; BACKGROUND: #dbe4ab; HEIGHT: auto; COLOR: #000; PADDING-TOP: 5px
+}
+.menu UL LI A:hover UL LI A.drop {
+	BACKGROUND: #c9c9a7
+}
+.menu UL LI A:hover UL LI A UL {
+	POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden
+}
+.menu UL LI A:hover UL LI A:hover {
+	BACKGROUND: #c9c9a7; COLOR: #000
+}
+.menu UL LI A:hover UL LI A:hover UL {
+	POSITION: absolute; VISIBILITY: visible; COLOR: #000; TOP: 0px; LEFT: 150px
+}
+.menu UL LI A:hover UL LI A:hover UL.left {
+	LEFT: -150px
+}
